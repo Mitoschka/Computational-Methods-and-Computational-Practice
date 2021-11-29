@@ -50,9 +50,10 @@ def print_conditions(a: float, b: float):
     print("1) 42")
     print("2) 2x + 42")
     print("3) 3x^2 + 2x + 42")
-    print("4) 4x^2 + 3x^2 + 2x + 42")
-    print("5) exp(x)")
-    print("6) sin(x)")
+    print("4) 4x^3 + 3x^2 + 2x + 42")
+    print("5) 5x^4 + 4x^3 + 3x^2 + 2x + 42")
+    print("6) exp(x)")
+    print("7) sin(x)")
 
 
 def print_menu():
@@ -74,7 +75,8 @@ functions = [
     ("42", lambda x: x * 0 + 42),
     ("2x + 42", lambda x: 2 * x + 42),
     ("3x^2 + 2x + 42", lambda x: 3 * x ** 2 + 2 * x + 42),
-    ("4x^2 + 3x^2 + 2x + 42", lambda x: 4 * x ** 2 + 3 * x ** 2 + 2 * x + 42),
+    ("4x^3 + 3x^2 + 2x + 42", lambda x: 4 * x ** 3 + 3 * x ** 2 + 2 * x + 42),
+    ("5x^4 + 4x^3 + 3x^2 + 2x + 42", lambda x: 5 * x ** 4 + 4 * x ** 3 + 3 * x ** 2 + 2 * x + 42),
     ("exp(x)", lambda x: math.exp(x)),
     ("sin(x)", lambda x: math.sin(x)),
 ]
@@ -110,13 +112,11 @@ def main():
             print_conditions(a, b)
         elif commad_number == 1:
             try:
-                print("Введите значение левой границы интегрирования (a):")
-                a = float(input())
+                a = float(input("Введите значение левой границы интегрирования (a): "))
             except:
                 a = float(0)
             try:
-                print("Введите значение правой границы интегрирования (b):")
-                b = float(input())
+                b = float(input("Введите значение правой границы интегрирования (b): "))
             except:
                 b = float(1)
         elif commad_number == 2:
@@ -125,7 +125,7 @@ def main():
             headers = [
                 "Название квадратурной формулы",
                 "Приближенное значение J(n)",
-                "Значение фактической ошибки |J(n) - J|",
+                "Значение фактической погрешности |J(n) - J|",
             ]
 
             for function_name, function in functions:
