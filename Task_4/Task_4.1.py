@@ -110,14 +110,18 @@ def main():
             print_conditions(a, b)
         elif commad_number == 1:
             try:
-                a = float(input("Введите значение левой границы интегрирования (a): "))
+                print("Введите значение левой границы интегрирования (a):")
+                a = float(input())
             except:
                 a = float(0)
             try:
-                b = float(input("Введите значение правой границы интегрирования (b): "))
+                print("Введите значение правой границы интегрирования (b):")
+                b = float(input())
             except:
                 b = float(1)
         elif commad_number == 2:
+            results_of_integrations = []
+
             headers = [
                 "Название квадратурной формулы",
                 "Приближенное значение J(n)",
@@ -137,7 +141,9 @@ def main():
                 simp = quadrature_formula_of_simp(function, a, b)
                 qd_3_8 = quadrature_formula_of_3_8(function, a, b)
 
-                result_list.extend([left_rect, right_rect, inter_rect, trap, simp, qd_3_8])
+                result_list.extend(
+                    [left_rect, right_rect, inter_rect, trap, simp, qd_3_8]
+                )
 
                 error_list.extend(
                     [
@@ -152,7 +158,10 @@ def main():
 
                 print("\n\n")
                 print(Fore.GREEN + f"Выбранная функция: {function_name}")
-                print(Fore.GREEN + f"Точное значение интеграла J: {results_of_integrations}")
+                print(
+                    Fore.GREEN
+                    + f"Точное значение интеграла J: {results_of_integrations}"
+                )
 
                 table = zip(quadratures_formulas_name, result_list, error_list)
                 print("\n" + tabulate(table, headers, floatfmt=".15e", tablefmt="grid"))
